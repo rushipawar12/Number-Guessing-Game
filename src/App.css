@@ -1,0 +1,295 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.game-container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-title {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Difficulty Selector */
+.difficulty-selector {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.difficulty-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.difficulty-selector select {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.difficulty-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.difficulty-selector select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Game Info */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f1f3f4;
+  border-radius: 10px;
+}
+
+.range-info, .attempts-info {
+  font-weight: 600;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Feedback */
+.feedback {
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.feedback.playing {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 2px solid #bbdefb;
+}
+
+.feedback.won {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 2px solid #c8e6c9;
+  animation: celebrate 0.6s ease-in-out;
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Game Input */
+.game-input {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.guess-input {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.guess-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.guess-button {
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.guess-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.guess-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.guess-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Play Again Button */
+.play-again-button {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.play-again-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* Leaderboard */
+.leaderboard {
+  margin-top: 30px;
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border: 2px solid #e9ecef;
+}
+
+.leaderboard h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leaderboard-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  align-items: center;
+  font-size: 14px;
+}
+
+.leaderboard-item .rank {
+  font-weight: bold;
+  color: #667eea;
+  text-align: center;
+}
+
+.leaderboard-item .score {
+  font-weight: 600;
+  color: #333;
+}
+
+.leaderboard-item .difficulty {
+  color: #666;
+  font-size: 12px;
+}
+
+.leaderboard-item .date {
+  color: #888;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .app {
+    padding: 10px;
+  }
+
+  .game-container {
+    padding: 25px;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-input {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .guess-button {
+    width: 100%;
+  }
+
+  .game-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .leaderboard-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 5px;
+  }
+}
